@@ -7,58 +7,26 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## About API
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Hi, I have no time to set up Swagger for API Documentation, so I will describe it here:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### AUTH
+- REGISTER: POST - {url}/api/register with body request (name, email, password & password_confirmation)  => return token & user information
+- LOGIN: POST - {url}/api/login with body request (email & password )  => return token 
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### TABLE FOR LIST/COLUMN DATA CRUD (USING BEARER TOKEN THAT YOU GET FROM LOGIN return data)
+- INDEX: GET - {url}/api/column with body request 'date' and 'status' (optiona;)  => return list of column data
+- STORE: POST - {url}/api/column with body request (title)  => return data that store
+- UPDATE: PUT - {url}/api/column/{id} with body request (title)  => return data that update (id param is encryption id from real ID)
+- SHOW: GET - {url}/api/column/{id}  => return data column (id param is encryption id from real ID)
+- DESTROY: DELETE - {url}/api/column/{id}  => return message result (id param is encryption id from real ID)
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### TABLE CARD DATA CRUD (USING BEARER TOKEN THAT YOU GET FROM LOGIN return data)
+- INDEX: GET - {url}/api/card/{id}/list with body request 'date' and 'status' (optional)  => return list of card data (id param is encryption id from real ID)
+- STORE: POST - {url}/api/card with body request (title, column_id)  => return data that store
+- UPDATE: PUT - {url}/api/card/{id} with body request (title, column id)  => return data that update (id param is encryption id from real ID)
+- SHOW: GET - {url}/api/card/{id}  => return data card (id param is encryption id from real ID)
+- DESTROY: DELETE - {url}/api/card/{id}  => return message result (id param is encryption id from real ID)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

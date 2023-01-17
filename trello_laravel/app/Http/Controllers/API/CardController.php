@@ -12,20 +12,18 @@ use Illuminate\Support\Facades\DB;
 
 class CardController extends Controller
 {
-    public function index(Request $request){
+    public function index(Request $request, $id){
+        $decryptId = Crypt::decryptString($id);
         $datas = [];
 
         $condition = [];
 
+        $condition[] = ['column_id', $decryptId];
+
         if(isset($request->date) && strlen($request->date)>0) $condition[] = ['created_at', $request->date];
         if(isset($request->status) && strlen($request->status)>0) $condition[] = ['is_active', $request->status];
 
-        if(count($condition)>0){
-            $datas = TrelloCard::where($condition)->orderBy('id', 'DESC')->get();
-        }
-        else{
-            $datas = TrelloCard::all();
-        }
+        $datas = TrelloCard::where($condition)->orderBy('id', 'DESC')->get();
 
         return response()->json($datas);
     }
@@ -33,7 +31,7 @@ class CardController extends Controller
     public function store(Request $request){
         $validator = Validator::make($request->all(),[
             'title' => 'required|string', 
-            'column_id' => 'required|string', 
+            'column_id' => 'required', 
         ]);
         
         if($validator->fails()){
@@ -70,7 +68,7 @@ class CardController extends Controller
     public function update(Request $request, $id){
         $validator = Validator::make($request->all(),[
             'title' => 'required|string',
-            'column_id' => 'required|string', 
+            'column_id' => 'required', 
         ]);
 
         if($validator->fails()){

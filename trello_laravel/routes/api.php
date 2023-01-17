@@ -29,5 +29,6 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::resource('/column', ColumnController::class)->except(['create', 'edit']);
-    Route::resource('/card', CardController::class)->except(['create', 'edit']);
+    Route::resource('/card', CardController::class)->except(['create', 'edit', 'index']);
+    Route::get('/card/{id}/list', [CardController::class, 'index']);
 });
