@@ -25,8 +25,8 @@ Hi, I have no time to set up Swagger for API Documentation, so I will describe i
 
 ### TABLE CARD DATA CRUD (USING BEARER TOKEN THAT YOU GET FROM LOGIN return data)
 - INDEX: GET - {url}/api/card/{id}/list with body request 'date' and 'status' (optional)  => return list of card data (id param is encryption id from real ID)
-- STORE: POST - {url}/api/card with body request (title, column_id)  => return data that store
-- UPDATE: PUT - {url}/api/card/{id} with body request (title, column id)  => return data that update (id param is encryption id from real ID)
+- STORE: POST - {url}/api/card with body request (title, column_id, position, description)  => return data that store
+- UPDATE: PUT - {url}/api/card/{id} with body request (title, column id, position, description)  => return data that update (id param is encryption id from real ID)
 - SHOW: GET - {url}/api/card/{id}  => return data card (id param is encryption id from real ID)
 - DESTROY: DELETE - {url}/api/card/{id}  => return message result (id param is encryption id from real ID)
 

@@ -20,6 +20,6 @@ class TrelloColumn extends Model
     }
 
     public function getListCardAttribute(){
-        return TrelloCard::where('column_id', $this->id)->get();
+        return TrelloCard::where('column_id', $this->id)->orderBy('position')->get();
     }
 }

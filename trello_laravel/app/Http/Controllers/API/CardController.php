@@ -42,6 +42,7 @@ class CardController extends Controller
             'title' =>  $request->title,
             'description' =>  $request->description,
             'column_id' =>  $request->column_id,
+            'position' =>  $request->position,
             'is_active' => 1,
             'created_by'        => auth()->user()->id,
             'updated_by'        => auth()->user()->id
@@ -81,6 +82,7 @@ class CardController extends Controller
             $model->title =  $request->title;
             $model->description =  $request->description;
             $model->column_id =  $request->column_id;
+            $model->position =  $request->position;
             $model->updated_by = auth()->user()->id;
             $model->save();
 
